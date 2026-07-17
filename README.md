@@ -154,6 +154,18 @@ data/vel_z6.25m_x12.5m_exact.segy
 
 ### Minimal CPU CVT example
 
+<p align="center">
+  <img src="images/BP2004_CVT_CPU.jpg"
+       alt="BP2004 adaptive triangular mesh after CPU centroidal Voronoi smoothing"
+       width="100%">
+</p>
+
+<p align="center">
+  <em>Adaptive PakMsh triangular mesh for the BP 2004 velocity model after density-weighted CPU CVT smoothing.</em>
+</p>
+
+---
+
 Save the following script as `bp2004_cvt_cpu.py` in the directory containing the `PakMsh` package:
 
 ```python
@@ -284,20 +296,6 @@ iterations=10
 ```
 
 The lower-resolution test verifies the workflow but does not reproduce the mesh density shown below.
-
-### BP2004 mesh after CPU CVT smoothing
-
-<p align="center">
-  <img src="images/BP2004_CVT_CPU.jpg"
-       alt="BP2004 adaptive triangular mesh after CPU centroidal Voronoi smoothing"
-       width="100%">
-</p>
-
-<p align="center">
-  <em>Adaptive PakMsh triangular mesh for the BP 2004 velocity model after density-weighted CPU CVT smoothing.</em>
-</p>
-
----
 
 ## Optional GPU installation
 
