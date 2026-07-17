@@ -167,8 +167,8 @@ from PakMsh.plotUtils import plot_mesh
 
 
 # BP 2004 physical domain.
-depth_z = -12_000.0
-length_x = 67_000.0
+depth_z = -12000.0
+length_x = 67000.0
 
 # Downloaded SEG-Y velocity model.
 segy_file = "data/vel_z6.25m_x12.5m_exact.segy"
@@ -180,8 +180,8 @@ maximum_frequency = 9.0
 grading = 0.85
 
 # Bubble-packing parameters used by the BP2004 example.
-sampling_resolution = 8_379
-maximum_points = 5_000_000
+sampling_resolution = 8379
+maximum_points = 5000000
 overlap = 1.25
 
 # Create the wavelength-based element-sizing function.
@@ -312,6 +312,16 @@ nvidia-smi
 ```
 
 The NVIDIA driver must be installed on Windows. WSL uses the Windows NVIDIA driver to access the GPU.
+
+### Before installing CuPy, upgrade setuptools and pip:
+
+```bash
+pip install -U setuptools pip
+```
+
+### Install CUDA Toolkit CUDA v12.x:
+
+Install CUDA Toolkit version equivalent to the CuPy version, in the tested environment its CUDA toolkit CUDA v12.x (x86_64 / aarch64)
 
 ### Remove conflicting CuPy packages
 
