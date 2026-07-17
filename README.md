@@ -129,6 +129,18 @@ pip install notebook
 
 The following minimal example downloads the **BP 2004 velocity model**, creates a wavelength-based sizing function, generates the initial PakMsh point distribution, applies CPU centroidal Voronoi tessellation smoothing, plots the final mesh, and exports it in Gmsh 2.2 `.msh` format.
 
+<p align="center">
+  <img src="images/BP2004_CVT_CPU.jpg"
+       alt="BP2004 adaptive triangular mesh after CPU centroidal Voronoi smoothing"
+       width="100%">
+</p>
+
+<p align="center">
+  <em>Adaptive PakMsh triangular mesh for the BP 2004 velocity model after density-weighted CPU CVT smoothing.</em>
+</p>
+
+---
+
 ### Download the BP 2004 velocity model
 
 The velocity model is publicly available from the Open Source Geoscience Amazon S3 repository:
@@ -151,20 +163,6 @@ The resulting file should be:
 ```text
 data/vel_z6.25m_x12.5m_exact.segy
 ```
-
-### Minimal CPU CVT example
-
-<p align="center">
-  <img src="images/BP2004_CVT_CPU.jpg"
-       alt="BP2004 adaptive triangular mesh after CPU centroidal Voronoi smoothing"
-       width="100%">
-</p>
-
-<p align="center">
-  <em>Adaptive PakMsh triangular mesh for the BP 2004 velocity model after density-weighted CPU CVT smoothing.</em>
-</p>
-
----
 
 Save the following script as `bp2004_cvt_cpu.py` in the directory containing the `PakMsh` package:
 
