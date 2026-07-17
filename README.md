@@ -317,7 +317,7 @@ pip install -U setuptools pip
 
 ### Install CUDA Toolkit CUDA v12.x:
 
-Install CUDA Toolkit version equivalent to the CuPy version, in the tested environment its CUDA toolkit CUDA v12.x (x86_64 / aarch64)
+Install CUDA Toolkit version equivalent to the CuPy version, in the tested environment its CUDA toolkit v12.x (x86_64 / aarch64)
 
 ### Remove conflicting CuPy packages
 
