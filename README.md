@@ -127,7 +127,7 @@ pip install notebook
 
 ## BP2004 quick-start example: CPU CVT mesh
 
-The following minimal example downloads the **BP 2004 velocity model**, creates a wavelength-based sizing function, generates the initial PakMsh point distribution, applies CPU centroidal Voronoi tessellation smoothing, plots the final mesh, and exports it in Gmsh 2.2 `.msh` format.
+Complete examples with all functionalities can be found in the supplied jupyter notebooks. The following minimal example downloads the **BP 2004 velocity model**, creates a wavelength-based sizing function, generates the initial PakMsh point distribution, applies CPU centroidal Voronoi tessellation smoothing, plots the final mesh, and exports it in Gmsh 2.2 `.msh` format.
 
 <p align="center">
   <img src="images/BP2004_CVT_CPU.jpg"
