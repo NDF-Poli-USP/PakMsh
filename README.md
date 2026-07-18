@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="images/pakmsh.jpg"
+       alt="PakMsh"
+       width="100%">
+</p>
+
 # PakMsh
 
 **PakMsh** is a two-dimensional adaptive mesh-generation package designed for geophysical and seismic velocity models.
