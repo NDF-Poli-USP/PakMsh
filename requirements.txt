@@ -6,9 +6,9 @@ scipy==1.15.3
 matplotlib==3.10.3
 numba==0.61.2
 segyio==1.9.13
-
-# Used by the supplied examples and mesh export
 meshio>=5.3,<6
+
+# Used by the supplied notebook examples
 notebook>=7,<8
 
 # Optional CUDA 12 GPU support:
