@@ -28,32 +28,7 @@ PakMsh supports:
 
 ---
 
-## Tested environment
-
-PakMsh was tested with the following environment:
-
-```text
-Python: 3.12.3
-Platform: Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39
-numpy: 2.2.5
-scipy: 1.15.3
-matplotlib: 3.10.3
-numba: 0.61.2
-segyio: 1.9.13
-cupy-cuda12x: 13.6.0
-
-GPU INFORMATION
----------------
-CuPy: 13.6.0
-CUDA runtime: 12090
-CUDA driver: 13000
-GPU devices: 1
-GPU name: NVIDIA GeForce RTX 3070 Ti Laptop GPU
-```
-
----
-
-## Installation on WSL
+## Quick installation on WSL
 
 Open the WSL terminal in the directory where PakMsh will be used.
 
@@ -87,48 +62,11 @@ source pakmsh_env/bin/activate
 pip install --upgrade pip
 ```
 
-### Install NumPy
+### Install PakMsh
 
 ```bash
-pip install numpy==2.2.5
+python -m pip install --no-cache-dir \ "git+https://github.com/NDF-Poli-USP/PakMsh.git@main"
 ```
-
-### Install SciPy
-
-```bash
-pip install scipy==1.15.3
-```
-
-### Install Matplotlib
-
-```bash
-pip install matplotlib==3.10.3
-```
-
-### Install Numba
-
-```bash
-pip install numba==0.61.2
-```
-
-### Install Segyio
-
-```bash
-pip install segyio==1.9.13
-```
-
-### Install Meshio for mesh export
-
-```bash
-pip install meshio
-```
-
-### Install Jupyter Notebook to run the supplied example
-
-```bash
-pip install notebook
-```
-
 ---
 
 ## BP2004 quick-start example: CPU CVT mesh
@@ -300,6 +238,111 @@ iterations=10
 ```
 
 The lower-resolution test verifies the workflow but does not reproduce the mesh density shown below.
+
+## Installation on WSL
+
+Open the WSL terminal in the directory where PakMsh will be used.
+
+### Update the package list
+
+```bash
+sudo apt update
+```
+
+### Install Python 3.12 and virtual-environment support
+
+```bash
+sudo apt install python3.12 python3.12-venv python3-pip
+```
+
+### Create a virtual environment
+
+```bash
+python3.12 -m venv pakmsh_env
+```
+
+### Activate the environment
+
+```bash
+source pakmsh_env/bin/activate
+```
+
+### Update pip
+
+```bash
+pip install --upgrade pip
+```
+
+### Install NumPy
+
+```bash
+pip install numpy==2.2.5
+```
+
+### Install SciPy
+
+```bash
+pip install scipy==1.15.3
+```
+
+### Install Matplotlib
+
+```bash
+pip install matplotlib==3.10.3
+```
+
+### Install Numba
+
+```bash
+pip install numba==0.61.2
+```
+
+### Install Segyio
+
+```bash
+pip install segyio==1.9.13
+```
+
+### Install Meshio for mesh export
+
+```bash
+pip install meshio
+```
+
+### Install Jupyter Notebook to run the supplied example
+
+```bash
+pip install notebook
+```
+
+---
+
+## Tested environment
+
+PakMsh was tested with the following environment:
+
+```text
+Python: 3.12.3
+Platform: Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39
+numpy: 2.2.5
+scipy: 1.15.3
+matplotlib: 3.10.3
+numba: 0.61.2
+segyio: 1.9.13
+cupy-cuda12x: 13.6.0
+
+GPU INFORMATION
+---------------
+CuPy: 13.6.0
+CUDA runtime: 12090
+CUDA driver: 13000
+GPU devices: 1
+GPU name: NVIDIA GeForce RTX 3070 Ti Laptop GPU
+```
+
+---
+
+
 
 ## Optional GPU installation
 
