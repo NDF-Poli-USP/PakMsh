@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pakmsh"
+version = "0.1.0"
+description = "Two-dimensional adaptive mesh generation for geophysical and seismic velocity models."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "LGPL-2.1-only"
+license-files = ["LICENSE"]
+
+authors = [
+    { name = "R. A. Soares Jr." }
+]
+
+keywords = [
+    "mesh-generation",
+    "bubble-packing",
+    "seismic",
+    "geophysics",
+    "delaunay",
+    "voronoi",
+    "finite-elements"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+dependencies = [
+    "numpy==2.2.5",
+    "scipy==1.15.3",
+    "matplotlib==3.10.3",
+    "numba==0.61.2",
+    "segyio==1.9.13"
+]
+
+[project.optional-dependencies]
+gpu = [
+    "cupy-cuda12x==13.6.0"
+]
+
+examples = [
+    "meshio>=5.3,<6",
+    "notebook>=7,<8"
+]
+
+dev = [
+    "build>=1.2",
+    "twine>=6"
+]
+
+[project.urls]
+Homepage = "https://github.com/NDF-Poli-USP/PakMsh"
+Repository = "https://github.com/NDF-Poli-USP/PakMsh"
+Issues = "https://github.com/NDF-Poli-USP/PakMsh/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["PakMsh*"]
+exclude = ["images*"]
