@@ -239,9 +239,10 @@ iterations=10
 
 The lower-resolution test verifies the workflow but does not reproduce the mesh density shown below.
 
-## Installation on WSL
+## Manual installation on WSL
 
-Open the WSL terminal in the directory where PakMsh will be used.
+Download the full main branch, the notebooks examples import the PakMsh module directly from the PakMsh folder. 
+Install the dependencies: open the WSL terminal in the directory where PakMsh will be used.
 
 ### Update the package list
 
@@ -341,8 +342,6 @@ GPU name: NVIDIA GeForce RTX 3070 Ti Laptop GPU
 ```
 
 ---
-
-
 
 ## Optional GPU installation
 
