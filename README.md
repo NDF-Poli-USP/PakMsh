@@ -242,7 +242,7 @@ The lower-resolution test verifies the workflow but does not reproduce the mesh 
 ## Manual installation on WSL
 
 Download the full main branch, the notebooks examples import the PakMsh module directly from the PakMsh folder. 
-Install the dependencies: open the WSL terminal in the directory where PakMsh will be used.
+Install the dependencies:
 
 ### Update the package list
 
