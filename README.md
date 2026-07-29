@@ -73,9 +73,9 @@ python -m pip install --no-cache-dir \ "git+https://github.com/NDF-Poli-USP/PakM
 
 To use the CUDA GPU capabilities it is needed to install Nvidia Drivers, CUDA ToolKit and Cupy.
 
-For WSL, first install the Windows Nvidia Drivers in nvidia.com/drivers/   
+For WSL, first install the Windows Nvidia Drivers in [nvidia.com/drivers/](http://nvidia.com/drivers/)
 
-Then, install the Nvidia ToolKit:
+Then, install the Nvidia ToolKit in WSL:
 
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
@@ -83,14 +83,22 @@ sudo dpkg -i cuda-keyring_1.1-1_all.deb
 sudo apt-get update
 sudo apt-get -y install cuda-toolkit-12-9
 ```
----
 
 ### Install Cupy
+
+Install Cupy in WSL: 
 
 ```bash
 python -m pip install -U setuptools pip
 pip install cupy-cuda12x
 ```
+
+Test with:
+
+```bash
+python -c "import cupy as cp; print('CuPy:', cp.__version__); print('CUDA runtime:', cp.cuda.runtime.runtimeGetVersion()); print('CUDA driver:', cp.cuda.runtime.driverGetVersion()); print('GPU devices:', cp.cuda.runtime.getDeviceCount()); print('GPU test:', int(cp.arange(10).sum()))"
+```
+
 ---
 
 ## BP2004 quick-start example: CPU CVT mesh
