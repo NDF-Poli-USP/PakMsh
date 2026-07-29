@@ -1,0 +1,13 @@
+{
+    "name": "pakmsh",
+    "build": {
+      "dockerfile": "../docker/Dockerfile",
+      "target": "pakmsh_development" // Specify the target stage
+    },
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "apt-get update",
+    "remoteUser": "root"
+  }
+  
