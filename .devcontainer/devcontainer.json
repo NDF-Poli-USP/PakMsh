@@ -2,12 +2,12 @@
     "name": "pakmsh",
     "build": {
       "dockerfile": "../docker/Dockerfile",
-      "target": "pakmsh_user" // Specify the target stage
+      "target": "pakmsh_development" // Specify the target stage
     },
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash"
     },
-    "postCreateCommand": "apt-get update",
+    "postCreateCommand": "python -m pip install -e '.[dev]'",
     "remoteUser": "root"
   }
   

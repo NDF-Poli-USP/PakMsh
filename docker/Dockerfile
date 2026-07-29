@@ -24,8 +24,4 @@ RUN python -m pip install --no-cache-dir "pakmsh[examples] @ git+https://github.
 
 FROM pakmsh_base AS pakmsh_development
 
-WORKDIR /home/shared/pakmsh
-COPY . .
-RUN python -m pip install --no-cache-dir \
-    -e ".[dev]"
-WORKDIR /home/
+WORKDIR /workspace
