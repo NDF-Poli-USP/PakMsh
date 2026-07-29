@@ -69,6 +69,30 @@ python -m pip install --no-cache-dir \ "git+https://github.com/NDF-Poli-USP/PakM
 ```
 ---
 
+### Optional CUDA Cupy installation
+
+To use the CUDA GPU capabilities it is needed to install Nvidia Drivers, CUDA ToolKit and Cupy.
+
+For WSL, first install the Windows Nvidia Drivers in nvidia.com/drivers/   
+
+Then, install the Nvidia ToolKit:
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-9
+```
+---
+
+### Install Cupy
+
+```bash
+python -m pip install -U setuptools pip
+pip install cupy-cuda12x
+```
+---
+
 ## BP2004 quick-start example: CPU CVT mesh
 
 Complete examples with all functionalities can be found in the supplied jupyter notebooks. The following minimal example downloads the **BP 2004 velocity model**, creates a wavelength-based sizing function, generates the initial PakMsh point distribution, applies CPU centroidal Voronoi tessellation smoothing, plots the final mesh, and exports it in Gmsh 2.2 `.msh` format.
