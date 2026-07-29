@@ -271,6 +271,131 @@ iterations=10
 
 The lower-resolution test verifies the workflow but does not reproduce the mesh density shown below.
 
+The GPU implementation of the same example is here:
+
+```python
+import numpy as np
+import meshio
+import cupy as cp
+
+from PakMsh.generationUtils import generate_mesh
+from PakMsh.sizingUtils import create_sizing_function
+from PakMsh.smoothingUtils import cvt_smooth_gpu
+from PakMsh.plotUtils import plot_mesh
+
+
+# Confirm that CuPy can execute a GPU kernel before starting the mesh.
+gpu_test = cp.arange(10)
+print(f"CuPy version: {cp.__version__}")
+print(f"CUDA runtime: {cp.cuda.runtime.runtimeGetVersion()}")
+print(f"CUDA driver: {cp.cuda.runtime.driverGetVersion()}")
+print(f"GPU devices: {cp.cuda.runtime.getDeviceCount()}")
+print(f"GPU test sum: {int(gpu_test.sum())}")
+
+
+# BP 2004 physical domain.
+depth_z = -12000.0
+length_x = 67000.0
+
+# Downloaded SEG-Y velocity model.
+segy_file = "vel_z6.25m_x12.5m_exact.segy"
+segy_bbox = (depth_z, 0.0, 0.0, length_x)
+
+# Wave-propagation and sizing parameters.
+elements_per_wavelength = 2
+maximum_frequency = 9.0
+grading = 0.85
+
+# Bubble-packing parameters used by the BP2004 example.
+sampling_resolution = 8379
+maximum_points = 5000000
+overlap = 1.25
+
+# Create the wavelength-based element-sizing function.
+sizing_function, minimum_size, maximum_size = create_sizing_function(
+    fname=segy_file,
+    hmin=0.0,
+    bbox=segy_bbox,
+    wl=elements_per_wavelength,
+    freq=maximum_frequency,
+    pad_type=None,
+    grade=grading,
+)
+
+# Generate the initial adaptive bubble-packing mesh.
+points, initial_triangles, boundary_points = generate_mesh(
+    x_range=(0.0, length_x),
+    z_range=(0.0, depth_z),
+    npoints=maximum_points,
+    density_function=sizing_function,
+    N=sampling_resolution,
+    pad_type=None,
+    ellipse_n=3.0,
+    padding_x=0.0,
+    padding_z=0.0,
+    subdomain=True,
+    overlap=overlap,
+    fineness="custom",
+    f_min=minimum_size,
+    f_max=maximum_size,
+)
+
+# Apply density-weighted centroidal Voronoi smoothing on the GPU.
+cvt_points, cvt_triangles = cvt_smooth_gpu(
+    points.copy(),
+    sizing_function,
+    0.0,                        # x minimum
+    length_x,                   # x maximum
+    depth_z,                    # z minimum
+    0.0,                        # z maximum
+    N=gpu_integration_resolution,
+    iterations=150,
+    influence=1.0,
+    hold_boundary=True,
+    boundary_points=boundary_points,
+)
+
+# Wait for all queued CUDA operations to finish.
+cp.cuda.Stream.null.synchronize()
+
+# Plot the final GPU-CVT mesh.
+plot_mesh(
+    cvt_points,
+    x_range=(0.0, length_x),
+    z_range=(0.0, depth_z),
+    density_function=sizing_function,
+    show_points=False,
+    show_density=False,
+    show_element_size=False,
+    filename="BP2004_CVT_GPU",
+)
+
+# Export the two-dimensional mesh as Gmsh 2.2 ASCII.
+mesh_points_3d = np.column_stack(
+    (
+        cvt_points[:, 0],
+        cvt_points[:, 1],
+        np.zeros(len(cvt_points)),
+    )
+)
+
+mesh = meshio.Mesh(
+    points=mesh_points_3d,
+    cells=[
+        ("triangle", np.asarray(cvt_triangles, dtype=np.int32)),
+    ],
+)
+
+meshio.write(
+    "BP2004_CVT_GPU.msh",
+    mesh,
+    file_format="gmsh22",
+    binary=False,
+)
+
+print("Created BP2004_CVT_GPU.msh")
+```
+
 ## Manual installation on WSL
 
 Download the full main branch, the notebooks examples import the PakMsh module directly from the PakMsh folder. 
