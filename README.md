@@ -271,6 +271,8 @@ iterations=10
 
 The lower-resolution test verifies the workflow but does not reproduce the mesh density shown below.
 
+## BP2004 GPU example: CVT-GPU mesh
+
 The GPU implementation of the same example is here:
 
 ```python
@@ -298,7 +300,7 @@ depth_z = -12000.0
 length_x = 67000.0
 
 # Downloaded SEG-Y velocity model.
-segy_file = "vel_z6.25m_x12.5m_exact.segy"
+segy_file = "data/vel_z6.25m_x12.5m_exact.segy"
 segy_bbox = (depth_z, 0.0, 0.0, length_x)
 
 # Wave-propagation and sizing parameters.
