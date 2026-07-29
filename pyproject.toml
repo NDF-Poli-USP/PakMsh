@@ -57,7 +57,10 @@ examples = [
 
 dev = [
     "build>=1.2",
-    "twine>=6"
+    "twine>=6",
+    "pytest",
+    "pytest-cov",
+    "memory_profiler",
 ]
 
 [project.urls]

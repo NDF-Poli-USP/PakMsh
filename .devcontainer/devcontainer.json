@@ -2,7 +2,7 @@
     "name": "pakmsh",
     "build": {
       "dockerfile": "../docker/Dockerfile",
-      "target": "pakmsh_development" // Specify the target stage
+      "target": "pakmsh_user" // Specify the target stage
     },
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash"
